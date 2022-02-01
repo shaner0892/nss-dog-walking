@@ -3,8 +3,10 @@ import { CityList } from "./CityList.js"
 import { Assignments } from "./Assignments.js"
 import { RegisteredPets } from "./RegisteredPets.js"
 
+//assigning a variable to the location you want the lists printed
 const mainContainer = document.querySelector("#container")
 
+//using HTML to print each list by invoking the imported functions 
 const applicationHTML = `
 <h1>DeShawn's Dog Walking</h1>
 <article class="details">
@@ -28,5 +30,6 @@ const applicationHTML = `
 </article>
 `
 
+//assigning the HTML code that you want printed in the assigned location
 mainContainer.innerHTML = applicationHTML
 

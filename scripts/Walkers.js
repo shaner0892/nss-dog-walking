@@ -1,12 +1,12 @@
 import { getWalkers, getWalkerCities, getCities } from "./database.js"
 
+//adding a click event so when the walker's name is clicked a window alert pops up saying what city they service
 document.addEventListener(
     "click",
     (clickEvent) => {
         const itemClicked = clickEvent.target
         if (itemClicked.id.startsWith("walker")) {
             const [,walkerId] = itemClicked.id.split("--")
-
             for (const walker of walkers) {
                 if (walker.id === parseInt(walkerId)) {
                     const assignments = filterWalkerCitiesByWalker(walker)
@@ -18,21 +18,19 @@ document.addEventListener(
     }
 )
 
+//invokes the imported functions and assigns them to a variable
 const walkers = getWalkers()
 const walkerCities = getWalkerCities()
 const cities = getCities()
 
-
+//defines a function to print a list of walker's names in HTML 
 export const Walkers = () => {
     let walkerHTML = "<ul>"
-
     for (const walker of walkers) {
         walkerHTML += `<li id="walker--${walker.id}">${walker.name}</li>`
     }
-
     walkerHTML += "</ul>"
     return walkerHTML
-
 }
 
 // The function needs the walker information, so define a parameter
@@ -51,7 +49,7 @@ const filterWalkerCitiesByWalker = (walker) => {
     return assignmentArray
 }
 
-// Define a function that builds a string of city names. Needs a paramter for assignments array.
+// Define a function that builds a string of city names. Needs a parameter for assignments array.
 const assignedCityNames = (assignmentArray) => {
     // Define an empty string that will get appended with matching cities
     let matchingCities = ""
