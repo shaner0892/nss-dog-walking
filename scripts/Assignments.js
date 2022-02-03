@@ -34,13 +34,13 @@ const findWalkerCity = (walker, walkerCities) => {
 //how do you know which city the pet is in? The walkers service multiple areas?
 //finds the city the pet is currently being walked in
 const findCurrentCity = (cities, allWalkerCities) => {
-    let currentWalkerCity = []
+    let currentWalkerCity = ""
     //iterates through the array returned from the above function 
     for (const walkerCity of allWalkerCities) {
         //iterates through the cities array to see if the ids match and then pushes it to the empty array
         for (const city of cities) {
             if (walkerCity.cityId === city.id) { 
-                currentWalkerCity.push(city.name)
+                currentWalkerCity += `${city.name}`
         }
     }
     return currentWalkerCity
@@ -51,7 +51,7 @@ const findCurrentCity = (cities, allWalkerCities) => {
 export const Assignments = () => {
     let assignmentHTML = ""
     assignmentHTML = "<ul>"
-//will need to change currentPet and pets?
+
 //iterating through the pets array, for each pet you use the above functions to find the walker and city they're in
     for (const currentPet of pets) {
         const currentPetWalker = findWalker(currentPet, walkers)
